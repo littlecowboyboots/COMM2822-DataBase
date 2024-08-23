@@ -1,0 +1,112 @@
+-- list the relationship and phone_no of
+-- the emergency_contact of patient 3
+-- by Max
+SELECT DISTINCT
+    patient_name,
+    relationship,
+    emergency_contact.phone_no
+FROM
+    patient
+    JOIN profile USING(patient_id) 
+    JOIN emergency_contact USING(emergency_contact_id)
+WHERE
+    patient_id = 3
+ORDER BY
+	relationship;
+
+-- list the medication and dosage that
+-- patient 5 needs to take in their psychiatric_prescription
+-- by Max
+SELECT DISTINCT
+    patient_name,
+    medication_type,
+    dosage
+FROM
+    patient
+    JOIN psychiatric_prescription USING(patient_id) 
+    JOIN medication USING(medication_id)
+WHERE
+    patient_id = 5;
+
+
+
+-- list the wards that has capacity >= 30
+-- by Mai
+SELECT DISTINCT
+    room_id,
+    room_type,
+    capacity
+FROM    
+    room
+WHERE
+    room_type = 'ward' AND
+    capacity >= 30;
+
+-- find all the in charge history of wards
+-- by Mai
+SELECT DISTINCT
+    staff_id,
+    room_id,
+    date_
+FROM
+    schedule
+    JOIN staff ON schedule.care_nurse_id = staff.staff_id
+    JOIN room USING(room_id)
+WHERE
+    staff_profession = 'care_nurse' AND
+    room_type = 'ward';
+
+
+-- list the provider and cost in health fund of patient 2
+-- by Zherui
+SELECT DISTINCT
+    patient_id,
+    health_fund_id,
+    provider,
+    cost
+FROM
+    profile
+    JOIN health_fund USING(health_fund_id)
+WHERE
+    patient_id = 2
+ORDER BY
+	health_fund_id;
+
+-- list the state, city and address line in address of patient 3
+-- by Zherui
+SELECT DISTINCT
+    patient_id,
+    address_id,
+    state,
+    city,
+    address_line
+FROM
+    profile
+    JOIN address USING(address_id)
+WHERE
+    patient_id = 3
+ORDER BY
+	address_id;
+
+
+-- list the diagnose of patient 8
+-- by Flora
+SELECT DISTINCT
+    patient_id,
+    diagnosis
+FROM
+    diagnose
+WHERE
+    patient_id = 8;
+
+-- list all patients who have 'disease_02'
+-- by Flora
+SELECT DISTINCT
+    patient_id,
+    disease
+FROM
+    records
+    JOIN medical_record USING(medical_record_id)
+    JOIN patient USING(patient_id)
+WHERE
+    disease = 'disease_02';

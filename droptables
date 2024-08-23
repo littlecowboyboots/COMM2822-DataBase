@@ -1,0 +1,271 @@
+DROP TABLE profile;
+
+DROP TABLE occupy;
+
+DROP TABLE diagnose;
+
+DROP TABLE records;
+
+DROP TABLE medication_prescriprion;
+
+DROP TABLE psychiatric_prescription;
+
+DROP TABLE pain_treatment;
+
+DROP TABLE medical_test;
+
+DROP TABLE schedule;
+
+DROP TABLE health_fund;
+
+DROP TABLE emergency_contact;
+
+DROP TABLE address;
+
+DROP TABLE medical_record;
+
+DROP TABLE medication;
+
+DROP TABLE procedures;
+
+DROP TABLE intervention;
+
+DROP TABLE patient;
+
+DROP TABLE room;
+
+DROP TABLE staff;
+
+DROP TABLE department;
+
+--
+--
+----------------------------------------------------------------
+-- dependency
+--
+CREATE TABLE department (
+    department_id NUMBER(30, 0),
+    department_name VARCHAR(30),
+    department_head VARCHAR(30),
+    building_no VARCHAR(30),
+    CONSTRAINT department_pk PRIMARY KEY (department_id)
+);
+
+--
+--
+----------------------------------------------------------------
+-- super_types
+--
+CREATE TABLE staff (
+    staff_id NUMBER(30, 0),
+    staff_name VARCHAR(30),
+    date_hired date,
+    salary NUMBER(30, 2),
+    department_id NUMBER(30, 0),
+    staff_profession VARCHAR2(30),
+    CONSTRAINT staff_pk PRIMARY KEY (staff_id),
+    CONSTRAINT staff_fk1 FOREIGN KEY (department_id) REFERENCES department,
+    CONSTRAINT staff_unique1 UNIQUE (staff_id, staff_profession),
+    CHECK (staff_profession IN ('general_practitioner', 'psychiatrist', 'pharmacist', 'physiatrist', 'care_nurse', 'nurse_manager')),
+    CHECK (salary >= 0)
+);
+
+CREATE TABLE room (
+    room_id NUMBER(30, 0),
+    building_no VARCHAR(30),
+    capacity NUMBER(30, 2),
+    room_type VARCHAR(30) NOT NULL,
+    CONSTRAINT room_pk PRIMARY KEY (room_id),
+    CHECK (capacity >= 0),
+    CHECK (room_type IN ('treatment_room', 'ward'))
+);
+
+CREATE TABLE patient (
+    patient_id NUMBER(30, 0),
+    patient_name VARCHAR(30),
+    dob date,
+    phone_no VARCHAR(30),
+    patient_type VARCHAR(30) NOT NULL,
+    CONSTRAINT patient_pk PRIMARY KEY (patient_id),
+    CONSTRAINT patient_unique1 UNIQUE (patient_id, patient_type),
+    CHECK (patient_type IN ('mental_patient', 'physical_patient'))
+);
+
+--
+--
+----------------------------------------------------------------
+-- other regular entities
+--
+CREATE TABLE intervention (
+    intervention_id NUMBER(30, 0),
+    intervention_name VARCHAR(30),
+    cost NUMBER(30, 2),
+    intervention_type VARCHAR(30),
+    CONSTRAINT intervention_pk PRIMARY KEY (intervention_id),
+    CHECK (cost >= 0)
+);
+
+CREATE TABLE procedures (
+    procedure_id NUMBER(30, 0),
+    procedure_name VARCHAR(30),
+    cost NUMBER(30, 2),
+    procedure_type VARCHAR(30),
+    CONSTRAINT procedures_pk PRIMARY KEY (procedure_id),
+    CHECK (cost >= 0)
+);
+
+CREATE TABLE medication (
+    medication_id NUMBER(30, 0),
+    brand VARCHAR(30),
+    description VARCHAR(30),
+    side_effect VARCHAR(30),
+    medication_type VARCHAR(30),
+    CONSTRAINT medication_pk PRIMARY KEY (medication_id)
+);
+
+CREATE TABLE medical_record (
+    medical_record_id NUMBER(30, 0),
+    disease VARCHAR(30),
+    date_created date,
+    date_lastupdate date,
+    CONSTRAINT medical_record_pk PRIMARY KEY (medical_record_id),
+    CHECK (date_created <= date_lastupdate)
+);
+
+CREATE TABLE address (
+    address_id NUMBER(30, 0),
+    state VARCHAR(30),
+    city VARCHAR(30),
+    address_line VARCHAR(30),
+    CONSTRAINT address_pk PRIMARY KEY (address_id)
+);
+
+CREATE TABLE emergency_contact (
+    emergency_contact_id NUMBER(30, 0),
+    phone_no VARCHAR(30),
+    email VARCHAR(30),
+    relationship VARCHAR(30),
+    CONSTRAINT emergency_contact_pk PRIMARY KEY (emergency_contact_id)
+);
+
+CREATE TABLE health_fund (
+    health_fund_id NUMBER(30, 0),
+    provider VARCHAR(30),
+    cost NUMBER(30, 2),
+    expiration_date date,
+    CONSTRAINT health_fund_pk PRIMARY KEY (health_fund_id)
+);
+
+--
+--
+----------------------------------------------------------------
+-- composite entities
+--
+
+CREATE TABLE schedule (
+    nurse_manager_id NUMBER(30, 0),
+    care_nurse_id NUMBER(30, 0),
+    room_id NUMBER(30, 0),
+    date_ date,
+    -- do NOT modify the following default in value insertion
+    nurse_manager_profession VARCHAR2(30) DEFAULT 'nurse_manager',
+    care_nurse_profession VARCHAR2(30) DEFAULT 'care_nurse',
+    CONSTRAINT schedule_pk PRIMARY KEY (nurse_manager_id, care_nurse_id, room_id, date_),
+    CONSTRAINT schedule_fk1 FOREIGN KEY (room_id) REFERENCES room (room_id),
+    CONSTRAINT schedule_fk2 FOREIGN KEY (nurse_manager_id, nurse_manager_profession) REFERENCES staff (staff_id, staff_profession),
+    CONSTRAINT schedule_fk3 FOREIGN KEY (care_nurse_id, care_nurse_profession) REFERENCES staff (staff_id, staff_profession)
+);
+
+CREATE TABLE medical_test (
+    staff_id NUMBER(30, 0),
+    intervention_id NUMBER(30, 0),
+    mentel_illness VARCHAR(30),
+    test_type VARCHAR(30),
+    -- do NOT modify the following default in value insertion
+    staff_profession VARCHAR2(30) DEFAULT 'psychiatrist',
+    CONSTRAINT medical_test_pk PRIMARY KEY (staff_id, intervention_id),
+    CONSTRAINT medical_test_fk1 FOREIGN KEY (intervention_id) REFERENCES intervention (intervention_id),
+    CONSTRAINT medical_test_fk2 FOREIGN KEY (staff_id, staff_profession) REFERENCES staff (staff_id, staff_profession)
+);
+
+CREATE TABLE pain_treatment (
+    staff_id NUMBER(30, 0),
+    procedure_id NUMBER(30, 0),
+    physical_exam VARCHAR(30),
+    physical_illness VARCHAR(30),
+    -- do NOT modify the following default in value insertion
+    staff_profession VARCHAR2(30) DEFAULT 'physiatrist',
+    CONSTRAINT pain_treatment_pk PRIMARY KEY (staff_id, procedure_id),
+    CONSTRAINT pain_treatment_fk1 FOREIGN KEY (procedure_id) REFERENCES procedures (procedure_id),
+    CONSTRAINT pain_treatment_fk2 FOREIGN KEY (staff_id, staff_profession) REFERENCES staff (staff_id, staff_profession)
+);
+
+CREATE TABLE psychiatric_prescription (
+    patient_id NUMBER(30, 0),
+    medication_id NUMBER(30, 0),
+    staff_id NUMBER(30, 0),
+    intervention_id NUMBER(30, 0),
+    dosage NUMBER(30, 0),
+    -- do NOT modify the following default in value insertion
+    patient_type VARCHAR2(30) DEFAULT 'mental_patient',
+    CONSTRAINT psychiatric_prescription_pk PRIMARY KEY (patient_id, medication_id, staff_id, intervention_id),
+    CONSTRAINT psychiatric_prescription_fk1 FOREIGN KEY (medication_id) REFERENCES medication (medication_id),
+    CONSTRAINT psychiatric_prescription_fk2 FOREIGN KEY (staff_id, intervention_id) REFERENCES medical_test (staff_id, intervention_id),
+    CONSTRAINT psychiatric_prescription_fk3 FOREIGN KEY (patient_id, patient_type) REFERENCES patient (patient_id, patient_type)
+);
+
+CREATE TABLE medication_prescriprion (
+    patient_id NUMBER(30, 0),
+    medication_id NUMBER(30, 0),
+    staff_id NUMBER(30, 0),
+    procedure_id NUMBER(30, 0),
+    dosage NUMBER(30, 0),
+    -- do NOT modify the following default in value insertion
+    patient_type VARCHAR2(30) DEFAULT 'physical_patient',
+    CONSTRAINT medications_prescriprion_pk PRIMARY KEY (patient_id, medication_id, staff_id, procedure_id),
+    CONSTRAINT medications_prescriprion_fk1 FOREIGN KEY (medication_id) REFERENCES medication (medication_id),
+    CONSTRAINT medications_prescriprion_fk2 FOREIGN KEY (staff_id, procedure_id) REFERENCES pain_treatment (staff_id, procedure_id),
+    CONSTRAINT medications_prescriprion_fk3 FOREIGN KEY (patient_id, patient_type) REFERENCES patient (patient_id, patient_type)
+);
+
+CREATE TABLE records (
+    medical_record_id NUMBER(30, 0),
+    patient_id NUMBER(30, 0),
+    CONSTRAINT record_pk PRIMARY KEY (medical_record_id, patient_id),
+    CONSTRAINT record_fk1 FOREIGN KEY (medical_record_id) REFERENCES medical_record (medical_record_id),
+    CONSTRAINT record_fk2 FOREIGN KEY (patient_id) REFERENCES patient (patient_id)
+);
+
+CREATE TABLE diagnose (
+    staff_id NUMBER(30, 0),
+    medical_record_id NUMBER(30, 0),
+    patient_id NUMBER(30, 0),
+    diagnosis VARCHAR(30),
+    -- do NOT modify the following default in value insertion
+    staff_profession VARCHAR2(30) DEFAULT 'general_practitioner',
+    CONSTRAINT diagnose_pk PRIMARY KEY (staff_id, medical_record_id, patient_id),
+    CONSTRAINT diagnose_fk1 FOREIGN KEY (medical_record_id, patient_id) REFERENCES records (medical_record_id, patient_id),
+    CONSTRAINT diagnose_fk2 FOREIGN KEY (staff_id, staff_profession) REFERENCES staff (staff_id, staff_profession)
+);
+
+CREATE TABLE occupy (
+    patient_id NUMBER(30, 0),
+    room_id NUMBER(30, 0),
+    start_date date,
+    end_date date,
+    CONSTRAINT occupy_pk PRIMARY KEY (patient_id, room_id),
+    CONSTRAINT occupy_fk1 FOREIGN KEY (patient_id) REFERENCES patient (patient_id),
+    CONSTRAINT occupy_fk2 FOREIGN KEY (room_id) REFERENCES room (room_id)
+);
+
+CREATE TABLE profile (
+    patient_id NUMBER(30, 0),
+    emergency_contact_id NUMBER(30, 0),
+    address_id NUMBER(30, 0),
+    health_fund_id NUMBER(30, 0),
+    CONSTRAINT profile_pk PRIMARY KEY (patient_id, emergency_contact_id, address_id, health_fund_id),
+    CONSTRAINT profile_fk1 FOREIGN KEY (patient_id) REFERENCES patient (patient_id),
+    CONSTRAINT profile_fk2 FOREIGN KEY (emergency_contact_id) REFERENCES emergency_contact (emergency_contact_id),
+    CONSTRAINT profile_fk3 FOREIGN KEY (address_id) REFERENCES address (address_id),
+    CONSTRAINT profile_fk4 FOREIGN KEY (health_fund_id) REFERENCES health_fund (health_fund_id)
+);

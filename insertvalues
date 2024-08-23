@@ -1,0 +1,452 @@
+INSERT INTO department (department_id, department_name, department_head, building_no) 
+VALUES (1, 'department_name_01', 'department_head_01', 1);
+INSERT INTO department (department_id, department_name, department_head, building_no) 
+VALUES (2, 'department_name_02', 'department_head_02', 2);
+INSERT INTO department (department_id, department_name, department_head, building_no) 
+VALUES (3, 'department_name_03', 'department_head_03', 3);
+INSERT INTO department (department_id, department_name, department_head, building_no) 
+VALUES (4, 'department_name_04', 'department_head_04', 4);
+INSERT INTO department (department_id, department_name, department_head, building_no) 
+VALUES (5, 'department_name_05', 'department_head_05', 5);
+INSERT INTO department (department_id, department_name, department_head, building_no) 
+VALUES (6, 'department_name_06', 'department_head_06', 6);
+INSERT INTO department (department_id, department_name, department_head, building_no) 
+VALUES (7, 'department_name_07', 'department_head_07', 7);
+INSERT INTO department (department_id, department_name, department_head, building_no) 
+VALUES (8, 'department_name_08', 'department_head_same', 7);
+INSERT INTO department (department_id, department_name, department_head, building_no) 
+VALUES (9, 'department_name_same', 'department_head_same', 8);
+INSERT INTO department (department_id, department_name, department_head, building_no) 
+VALUES (10, 'department_name_same', 'department_head_08', 9);
+
+-- staff_profession IN ('general_practitioner', 'psychiatrist', 'pharmacist', 'physiatrist', 'care_nurse', 'nurse_manager')
+INSERT INTO staff (staff_id, staff_name, date_hired, salary, department_id, staff_profession) 
+VALUES (1, 'staff_name_01', '01-JAN-1970', 5000, 1, 'general_practitioner');
+INSERT INTO staff (staff_id, staff_name, date_hired, salary, department_id, staff_profession) 
+VALUES (2, 'staff_name_02', '02-JAN-1970', 5000, 1, 'general_practitioner');
+INSERT INTO staff (staff_id, staff_name, date_hired, salary, department_id, staff_profession) 
+VALUES (3, 'staff_name_03', '03-JAN-1970', 6000, 2, 'psychiatrist');
+INSERT INTO staff (staff_id, staff_name, date_hired, salary, department_id, staff_profession) 
+VALUES (4, 'staff_name_04', '04-JAN-1970', 6000, 2, 'psychiatrist');
+INSERT INTO staff (staff_id, staff_name, date_hired, salary, department_id, staff_profession) 
+VALUES (5, 'staff_name_05', '05-JAN-1970', 7000, 3, 'pharmacist');
+INSERT INTO staff (staff_id, staff_name, date_hired, salary, department_id, staff_profession) 
+VALUES (6, 'staff_name_06', '06-JAN-1970', 7000, 3, 'pharmacist');
+INSERT INTO staff (staff_id, staff_name, date_hired, salary, department_id, staff_profession) 
+VALUES (7, 'staff_name_07', '07-JAN-1970', 8000, 4, 'physiatrist');
+INSERT INTO staff (staff_id, staff_name, date_hired, salary, department_id, staff_profession) 
+VALUES (8, 'staff_name_08', '08-JAN-1970', 8000, 4, 'physiatrist');
+INSERT INTO staff (staff_id, staff_name, date_hired, salary, department_id, staff_profession) 
+VALUES (9, 'staff_name_09', '09-JAN-1970', 9000, 5, 'care_nurse');
+INSERT INTO staff (staff_id, staff_name, date_hired, salary, department_id, staff_profession) 
+VALUES (10, 'staff_name_10', '10-JAN-1970', 9000, 5, 'care_nurse');
+INSERT INTO staff (staff_id, staff_name, date_hired, salary, department_id, staff_profession) 
+VALUES (11, 'staff_name_11', '11-JAN-1970', 10000, 6, 'nurse_manager');
+INSERT INTO staff (staff_id, staff_name, date_hired, salary, department_id, staff_profession) 
+VALUES (12, 'staff_name_12', '12-JAN-1970', 10000.5, 6, 'nurse_manager');
+INSERT INTO staff (staff_id, staff_name, date_hired, salary, department_id, staff_profession) 
+VALUES (13, 'staff_name_13', '01-JAN-2000', 11000.05, 6, 'psychiatrist');
+INSERT INTO staff (staff_id, staff_name, date_hired, salary, department_id, staff_profession) 
+VALUES (14, 'staff_name_same', '01-JAN-2000', 11000.01, 7, 'psychiatrist');
+INSERT INTO staff (staff_id, staff_name, date_hired, salary, department_id, staff_profession) 
+VALUES (15, 'staff_name_same', '01-JAN-2000', 12000, 8, 'pharmacist');
+INSERT INTO staff (staff_id, staff_name, date_hired, salary, department_id, staff_profession) 
+VALUES (16, 'staff_name_same', sysdate, 12000, 8, 'pharmacist');
+INSERT INTO staff (staff_id, staff_name, date_hired, salary, department_id, staff_profession) 
+VALUES (17, 'staff_name_null', sysdate, 0, 10, NULL);
+
+-- room_type IN ('treatment_room', 'ward')
+INSERT INTO room (room_id, building_no, capacity, room_type) 
+VALUES (1, 'building_01', 11, 'treatment_room');
+INSERT INTO room (room_id, building_no, capacity, room_type) 
+VALUES (2, 'building_02', 23, 'ward');
+INSERT INTO room (room_id, building_no, capacity, room_type) 
+VALUES (3, 'building_03', 35, 'treatment_room');
+INSERT INTO room (room_id, building_no, capacity, room_type) 
+VALUES (4, 'building_04', 42, 'ward');
+INSERT INTO room (room_id, building_no, capacity, room_type) 
+VALUES (5, 'building_05', 59, 'treatment_room');
+INSERT INTO room (room_id, building_no, capacity, room_type) 
+VALUES (6, 'building_06', 66, 'ward');
+INSERT INTO room (room_id, building_no, capacity, room_type) 
+VALUES (7, 'building_07', 78, 'treatment_room');
+INSERT INTO room (room_id, building_no, capacity, room_type) 
+VALUES (8, 'building_08', 80, 'ward');
+INSERT INTO room (room_id, building_no, capacity, room_type) 
+VALUES (9, 'building_same', 80, 'treatment_room');
+INSERT INTO room (room_id, building_no, capacity, room_type) 
+VALUES (10, 'building_same', 99, 'ward');
+
+-- patient_type IN ('mental_patient', 'physical_patient')
+INSERT INTO patient (patient_id, patient_name, dob, phone_no, patient_type) 
+VALUES (1, 'patient_name_01', '01-JAN-1971', 1234567890, 'mental_patient');
+INSERT INTO patient (patient_id, patient_name, dob, phone_no, patient_type) 
+VALUES (2, 'patient_name_02', '02-JAN-1971', 1234567891, 'mental_patient');
+INSERT INTO patient (patient_id, patient_name, dob, phone_no, patient_type) 
+VALUES (3, 'patient_name_03', '03-JAN-1971', 1234567892, 'mental_patient');
+INSERT INTO patient (patient_id, patient_name, dob, phone_no, patient_type) 
+VALUES (4, 'patient_name_04', '04-JAN-1971', 1234567893, 'mental_patient');
+INSERT INTO patient (patient_id, patient_name, dob, phone_no, patient_type) 
+VALUES (5, 'patient_name_05', '05-JAN-1971', 1234567894, 'mental_patient');
+INSERT INTO patient (patient_id, patient_name, dob, phone_no, patient_type) 
+VALUES (6, 'patient_name_06', '06-JAN-1971', 1234567895, 'physical_patient');
+INSERT INTO patient (patient_id, patient_name, dob, phone_no, patient_type) 
+VALUES (7, 'patient_name_07', '07-JAN-1971', 1111111111, 'physical_patient');
+INSERT INTO patient (patient_id, patient_name, dob, phone_no, patient_type) 
+VALUES (8, 'patient_name_08', '01-JAN-2001', 1111111111, 'physical_patient');
+INSERT INTO patient (patient_id, patient_name, dob, phone_no, patient_type) 
+VALUES (9, 'patient_name_same', '01-JAN-2001', 1234567896, 'physical_patient');
+INSERT INTO patient (patient_id, patient_name, dob, phone_no, patient_type) 
+VALUES (10, 'patient_name_same', sysdate, 1234567897, 'physical_patient');
+
+
+INSERT INTO intervention (intervention_id, intervention_name, cost, intervention_type) 
+VALUES (1, 'intervention_name_01', 100, 'intervention_type_01');
+INSERT INTO intervention (intervention_id, intervention_name, cost, intervention_type) 
+VALUES (2, 'intervention_name_02', 200, 'intervention_type_02');
+INSERT INTO intervention (intervention_id, intervention_name, cost, intervention_type) 
+VALUES (3, 'intervention_name_03', 300, 'intervention_type_03');
+INSERT INTO intervention (intervention_id, intervention_name, cost, intervention_type) 
+VALUES (4, 'intervention_name_04', 400, 'intervention_type_04');
+INSERT INTO intervention (intervention_id, intervention_name, cost, intervention_type) 
+VALUES (5, 'intervention_name_05', 500, 'intervention_type_05');
+INSERT INTO intervention (intervention_id, intervention_name, cost, intervention_type) 
+VALUES (6, 'intervention_name_06', 600, 'intervention_type_06');
+INSERT INTO intervention (intervention_id, intervention_name, cost, intervention_type) 
+VALUES (7, 'intervention_name_07', 700, 'intervention_type_same');
+INSERT INTO intervention (intervention_id, intervention_name, cost, intervention_type) 
+VALUES (8, 'intervention_name_08', 1, 'intervention_type_same');
+INSERT INTO intervention (intervention_id, intervention_name, cost, intervention_type) 
+VALUES (9, 'intervention_name_same', 1, 'intervention_type_07');
+INSERT INTO intervention (intervention_id, intervention_name, cost, intervention_type) 
+VALUES (10, 'intervention_name_same', 800.02, 'intervention_type_08');
+
+INSERT INTO procedures (procedure_id, procedure_name, cost, procedure_type) 
+VALUES (1, 'procedure_name_01', 1000, 'procedure_type_01');
+INSERT INTO procedures (procedure_id, procedure_name, cost, procedure_type) 
+VALUES (2, 'procedure_name_02', 2000, 'procedure_type_02');
+INSERT INTO procedures (procedure_id, procedure_name, cost, procedure_type) 
+VALUES (3, 'procedure_name_03', 3000, 'procedure_type_03');
+INSERT INTO procedures (procedure_id, procedure_name, cost, procedure_type) 
+VALUES (4, 'procedure_name_04', 4000, 'procedure_type_04');
+INSERT INTO procedures (procedure_id, procedure_name, cost, procedure_type) 
+VALUES (5, 'procedure_name_05', 5000, 'procedure_type_05');
+INSERT INTO procedures (procedure_id, procedure_name, cost, procedure_type) 
+VALUES (6, 'procedure_name_06', 6000, 'procedure_type_06');
+INSERT INTO procedures (procedure_id, procedure_name, cost, procedure_type) 
+VALUES (7, 'procedure_name_07', 7000, 'procedure_type_same');
+INSERT INTO procedures (procedure_id, procedure_name, cost, procedure_type) 
+VALUES (8, 'procedure_name_08', 10, 'procedure_type_same');
+INSERT INTO procedures (procedure_id, procedure_name, cost, procedure_type) 
+VALUES (9, 'procedure_name_same', 10, 'procedure_type_07');
+INSERT INTO procedures (procedure_id, procedure_name, cost, procedure_type) 
+VALUES (10, 'procedure_name_same', 8000.03, 'procedure_type_08');
+
+INSERT INTO medication (medication_id, brand, description, side_effect, medication_type) 
+VALUES (1, 'brand_01', 'description_01', 'side_effect_01', 'medication_type_01');
+INSERT INTO medication (medication_id, brand, description, side_effect, medication_type) 
+VALUES (2, 'brand_02', 'description_02', 'side_effect_02', 'medication_type_02');
+INSERT INTO medication (medication_id, brand, description, side_effect, medication_type) 
+VALUES (3, 'brand_03', 'description_03', 'side_effect_03', 'medication_type_03');
+INSERT INTO medication (medication_id, brand, description, side_effect, medication_type) 
+VALUES (4, 'brand_04', 'description_04', 'side_effect_04', 'medication_type_04');
+INSERT INTO medication (medication_id, brand, description, side_effect, medication_type) 
+VALUES (5, 'brand_05', 'description_05', 'side_effect_05', 'medication_type_05');
+INSERT INTO medication (medication_id, brand, description, side_effect, medication_type) 
+VALUES (6, 'brand_06', 'description_06', 'side_effect_06', 'medication_type_same');
+INSERT INTO medication (medication_id, brand, description, side_effect, medication_type) 
+VALUES (7, 'brand_07', 'description_07', 'side_effect_same', 'medication_type_same');
+INSERT INTO medication (medication_id, brand, description, side_effect, medication_type) 
+VALUES (8, 'brand_08', 'description_same', 'side_effect_same', 'medication_type_06');
+INSERT INTO medication (medication_id, brand, description, side_effect, medication_type) 
+VALUES (9, 'brand_same', 'description_same', 'side_effect_07', 'medication_type_07');
+INSERT INTO medication (medication_id, brand, description, side_effect, medication_type) 
+VALUES (10, 'brand_same', 'description_08', 'side_effect_08', 'medication_type_08');
+
+INSERT INTO medical_record (medical_record_id, disease, date_created, date_lastupdate) 
+VALUES (1, 'disease_01', '01-JAN-1972', '01-FEB-1972');
+INSERT INTO medical_record (medical_record_id, disease, date_created, date_lastupdate) 
+VALUES (2, 'disease_02', '02-JAN-1972', '02-FEB-1972');
+INSERT INTO medical_record (medical_record_id, disease, date_created, date_lastupdate) 
+VALUES (3, 'disease_03', '03-JAN-1972', '03-FEB-1972');
+INSERT INTO medical_record (medical_record_id, disease, date_created, date_lastupdate) 
+VALUES (4, 'disease_04', '04-JAN-1972', '04-FEB-1972');
+INSERT INTO medical_record (medical_record_id, disease, date_created, date_lastupdate) 
+VALUES (5, 'disease_05', '05-JAN-1972', '05-FEB-1972');
+INSERT INTO medical_record (medical_record_id, disease, date_created, date_lastupdate) 
+VALUES (6, 'disease_06', '06-JAN-1972', '06-FEB-1972');
+INSERT INTO medical_record (medical_record_id, disease, date_created, date_lastupdate) 
+VALUES (7, 'disease_07', '07-JAN-1972', '01-FEB-2002');
+INSERT INTO medical_record (medical_record_id, disease, date_created, date_lastupdate) 
+VALUES (8, 'disease_08', '01-JAN-2002', '01-FEB-2002');
+INSERT INTO medical_record (medical_record_id, disease, date_created, date_lastupdate) 
+VALUES (9, 'disease_same', '01-JAN-2002', sysdate);
+INSERT INTO medical_record (medical_record_id, disease, date_created, date_lastupdate) 
+VALUES (10, 'disease_same', '08-JAN-1972', '07-FEB-1972');
+
+INSERT INTO address (address_id, state, city, address_line) 
+VALUES (1, 'state_01', 'city_01', 'address_line_01');
+INSERT INTO address (address_id, state, city, address_line) 
+VALUES (2, 'state_02', 'city_02', 'address_line_02');
+INSERT INTO address (address_id, state, city, address_line) 
+VALUES (3, 'state_03', 'city_03', 'address_line_03');
+INSERT INTO address (address_id, state, city, address_line) 
+VALUES (4, 'state_04', 'city_04', 'address_line_04');
+INSERT INTO address (address_id, state, city, address_line) 
+VALUES (5, 'state_05', 'city_05', 'address_line_05');
+INSERT INTO address (address_id, state, city, address_line) 
+VALUES (6, 'state_06', 'city_06', 'address_line_same');
+INSERT INTO address (address_id, state, city, address_line) 
+VALUES (7, 'state_07', 'city_07', 'address_line_same');
+INSERT INTO address (address_id, state, city, address_line) 
+VALUES (8, 'state_08', 'city_same', 'address_line_06');
+INSERT INTO address (address_id, state, city, address_line) 
+VALUES (9, 'state_same', 'city_same', 'address_line_07');
+INSERT INTO address (address_id, state, city, address_line) 
+VALUES (10, 'state_same', 'city_08', 'address_line_08');
+
+INSERT INTO emergency_contact (emergency_contact_id, phone_no, email, relationship) 
+VALUES (1, 2234567890, 'email_01', 'relationship_01');
+INSERT INTO emergency_contact (emergency_contact_id, phone_no, email, relationship) 
+VALUES (2, 2234567891, 'email_02', 'relationship_02');
+INSERT INTO emergency_contact (emergency_contact_id, phone_no, email, relationship) 
+VALUES (3, 2234567892, 'email_03', 'relationship_03');
+INSERT INTO emergency_contact (emergency_contact_id, phone_no, email, relationship) 
+VALUES (4, 2234567893, 'email_04', 'relationship_04');
+INSERT INTO emergency_contact (emergency_contact_id, phone_no, email, relationship) 
+VALUES (5, 2234567894, 'email_05', 'relationship_05');
+INSERT INTO emergency_contact (emergency_contact_id, phone_no, email, relationship) 
+VALUES (6, 2234567895, 'email_06', 'relationship_06');
+INSERT INTO emergency_contact (emergency_contact_id, phone_no, email, relationship) 
+VALUES (7, 2234567896, 'email_same', 'relationship_07');
+INSERT INTO emergency_contact (emergency_contact_id, phone_no, email, relationship) 
+VALUES (8, 2234567897, 'email_same', 'relationship_same');
+INSERT INTO emergency_contact (emergency_contact_id, phone_no, email, relationship) 
+VALUES (9, 2222222222, 'email_07', 'relationship_same');
+INSERT INTO emergency_contact (emergency_contact_id, phone_no, email, relationship) 
+VALUES (10, 2222222222, 'email_08', 'relationship_08');
+
+INSERT INTO health_fund (health_fund_id, provider, cost, expiration_date) 
+VALUES (1, 'relationship_01', 200, '01-JAN-1975');
+INSERT INTO health_fund (health_fund_id, provider, cost, expiration_date) 
+VALUES (2, 'relationship_02', 201, '02-JAN-1975');
+INSERT INTO health_fund (health_fund_id, provider, cost, expiration_date) 
+VALUES (3, 'relationship_03', 202, '03-JAN-1975');
+INSERT INTO health_fund (health_fund_id, provider, cost, expiration_date) 
+VALUES (4, 'relationship_04', 203, '04-JAN-1975');
+INSERT INTO health_fund (health_fund_id, provider, cost, expiration_date) 
+VALUES (5, 'relationship_05', 204, '05-JAN-1975');
+INSERT INTO health_fund (health_fund_id, provider, cost, expiration_date) 
+VALUES (6, 'relationship_06', 205, '06-JAN-1975');
+INSERT INTO health_fund (health_fund_id, provider, cost, expiration_date) 
+VALUES (7, 'relationship_07', 206, '06-JAN-1975');
+INSERT INTO health_fund (health_fund_id, provider, cost, expiration_date) 
+VALUES (8, 'relationship_08', 206, '07-JAN-1975');
+INSERT INTO health_fund (health_fund_id, provider, cost, expiration_date) 
+VALUES (9, 'relationship_same', 0, '08-JAN-1975');
+INSERT INTO health_fund (health_fund_id, provider, cost, expiration_date) 
+VALUES (10, 'relationship_same', -100, '09-JAN-1975');
+
+--
+--
+----------------------------------------------------------------
+-- composite entities
+--
+
+-- nurse_manager_id corresponds to a nurse_manager, care_nurse_id corresponds to a care_nurse
+INSERT INTO schedule (nurse_manager_id, care_nurse_id, room_id, date_) 
+VALUES (11, 9, 1, '01-JAN-1973');
+INSERT INTO schedule (nurse_manager_id, care_nurse_id, room_id, date_) 
+VALUES (11, 10, 2, '01-JAN-1973');
+INSERT INTO schedule (nurse_manager_id, care_nurse_id, room_id, date_) 
+VALUES (11, 9, 1, '02-JAN-1973');
+INSERT INTO schedule (nurse_manager_id, care_nurse_id, room_id, date_) 
+VALUES (11, 10, 3, '01-JAN-1973');
+INSERT INTO schedule (nurse_manager_id, care_nurse_id, room_id, date_) 
+VALUES (11, 9, 4, '01-JAN-1973');
+INSERT INTO schedule (nurse_manager_id, care_nurse_id, room_id, date_) 
+VALUES (12, 10, 5, '03-JAN-1973');
+INSERT INTO schedule (nurse_manager_id, care_nurse_id, room_id, date_) 
+VALUES (12, 9, 6, '04-JAN-1973');
+INSERT INTO schedule (nurse_manager_id, care_nurse_id, room_id, date_) 
+VALUES (12, 10, 7, '05-JAN-1973');
+INSERT INTO schedule (nurse_manager_id, care_nurse_id, room_id, date_) 
+VALUES (12, 9, 8, '06-JAN-1973');
+INSERT INTO schedule (nurse_manager_id, care_nurse_id, room_id, date_) 
+VALUES (12, 10, 9, sysdate);
+
+-- staff_id corresponds to a psychiatrist
+INSERT INTO medical_test (staff_id, intervention_id, mentel_illness, test_type) 
+VALUES (3, 1, 'mentel_illness_01', 'test_type_01');
+INSERT INTO medical_test (staff_id, intervention_id, mentel_illness, test_type) 
+VALUES (3, 2, 'mentel_illness_02', 'test_type_02');
+INSERT INTO medical_test (staff_id, intervention_id, mentel_illness, test_type) 
+VALUES (3, 3, 'mentel_illness_03', 'test_type_03');
+INSERT INTO medical_test (staff_id, intervention_id, mentel_illness, test_type) 
+VALUES (3, 4, 'mentel_illness_04', 'test_type_04');
+INSERT INTO medical_test (staff_id, intervention_id, mentel_illness, test_type) 
+VALUES (3, 5, 'mentel_illness_05', 'test_type_05');
+INSERT INTO medical_test (staff_id, intervention_id, mentel_illness, test_type) 
+VALUES (4, 5, 'mentel_illness_06', 'test_type_06');
+INSERT INTO medical_test (staff_id, intervention_id, mentel_illness, test_type) 
+VALUES (4, 6, 'mentel_illness_07', 'test_type_07');
+INSERT INTO medical_test (staff_id, intervention_id, mentel_illness, test_type) 
+VALUES (4, 7, 'mentel_illness_08', 'test_type_same');
+INSERT INTO medical_test (staff_id, intervention_id, mentel_illness, test_type) 
+VALUES (4, 8, 'mentel_illness_same', 'test_type_same');
+INSERT INTO medical_test (staff_id, intervention_id, mentel_illness, test_type) 
+VALUES (4, 9, 'mentel_illness_same', 'test_type_08');
+
+-- staff_id corresponds to a physiatrist
+INSERT INTO pain_treatment (staff_id, procedure_id, physical_exam, physical_illness) 
+VALUES (7, 1, 'physical_exam_01', 'physical_illness_01');
+INSERT INTO pain_treatment (staff_id, procedure_id, physical_exam, physical_illness) 
+VALUES (7, 2, 'physical_exam_01', 'physical_illness_02');
+INSERT INTO pain_treatment (staff_id, procedure_id, physical_exam, physical_illness) 
+VALUES (7, 3, 'physical_exam_02', 'physical_illness_02');
+INSERT INTO pain_treatment (staff_id, procedure_id, physical_exam, physical_illness) 
+VALUES (7, 4, 'physical_exam_03', 'physical_illness_03');
+INSERT INTO pain_treatment (staff_id, procedure_id, physical_exam, physical_illness) 
+VALUES (7, 5, 'physical_exam_04', 'physical_illness_04');
+INSERT INTO pain_treatment (staff_id, procedure_id, physical_exam, physical_illness) 
+VALUES (8, 5, 'physical_exam_05', 'physical_illness_05');
+INSERT INTO pain_treatment (staff_id, procedure_id, physical_exam, physical_illness) 
+VALUES (8, 6, 'physical_exam_06', 'physical_illness_06');
+INSERT INTO pain_treatment (staff_id, procedure_id, physical_exam, physical_illness) 
+VALUES (8, 7, 'physical_exam_07', 'physical_illness_07');
+INSERT INTO pain_treatment (staff_id, procedure_id, physical_exam, physical_illness) 
+VALUES (8, 8, 'physical_exam_08', 'physical_illness_08');
+INSERT INTO pain_treatment (staff_id, procedure_id, physical_exam, physical_illness) 
+VALUES (8, 9, 'physical_exam_09', 'physical_illness_09');
+
+-- patient_id corresponds to a mental_patient
+-- (staff_id, intervention_id) REFERENCES medical_test
+INSERT INTO psychiatric_prescription (patient_id, medication_id, staff_id, intervention_id, dosage) 
+VALUES (1, 9, 3, 1, 100);
+INSERT INTO psychiatric_prescription (patient_id, medication_id, staff_id, intervention_id, dosage) 
+VALUES (1, 9, 3, 2, 100);
+INSERT INTO psychiatric_prescription (patient_id, medication_id, staff_id, intervention_id, dosage) 
+VALUES (2, 8, 3, 1, 200);
+INSERT INTO psychiatric_prescription (patient_id, medication_id, staff_id, intervention_id, dosage) 
+VALUES (2, 7, 3, 4, 200);
+INSERT INTO psychiatric_prescription (patient_id, medication_id, staff_id, intervention_id, dosage) 
+VALUES (3, 6, 3, 5, 200);
+INSERT INTO psychiatric_prescription (patient_id, medication_id, staff_id, intervention_id, dosage) 
+VALUES (3, 5, 4, 5, 300);
+INSERT INTO psychiatric_prescription (patient_id, medication_id, staff_id, intervention_id, dosage) 
+VALUES (4, 4, 4, 5, 300);
+INSERT INTO psychiatric_prescription (patient_id, medication_id, staff_id, intervention_id, dosage) 
+VALUES (4, 3, 4, 6, 300);
+INSERT INTO psychiatric_prescription (patient_id, medication_id, staff_id, intervention_id, dosage) 
+VALUES (5, 2, 4, 8, 300);
+INSERT INTO psychiatric_prescription (patient_id, medication_id, staff_id, intervention_id, dosage) 
+VALUES (5, 1, 4, 9, 100);
+
+-- patient_id corresponds to a physical_patient
+-- (staff_id, procedure_id) REFERENCES pain_treatment 
+INSERT INTO medication_prescriprion (patient_id, medication_id, staff_id, procedure_id, dosage) 
+VALUES (6, 2, 7, 1, 10);
+INSERT INTO medication_prescriprion (patient_id, medication_id, staff_id, procedure_id, dosage) 
+VALUES (6, 2, 7, 2, 20);
+INSERT INTO medication_prescriprion (patient_id, medication_id, staff_id, procedure_id, dosage) 
+VALUES (7, 3, 7, 3, 30);
+INSERT INTO medication_prescriprion (patient_id, medication_id, staff_id, procedure_id, dosage) 
+VALUES (7, 4, 7, 4, 40);
+INSERT INTO medication_prescriprion (patient_id, medication_id, staff_id, procedure_id, dosage) 
+VALUES (8, 5, 7, 4, 50);
+INSERT INTO medication_prescriprion (patient_id, medication_id, staff_id, procedure_id, dosage) 
+VALUES (8, 6, 8, 6, 60);
+INSERT INTO medication_prescriprion (patient_id, medication_id, staff_id, procedure_id, dosage) 
+VALUES (9, 7, 8, 7, 70);
+INSERT INTO medication_prescriprion (patient_id, medication_id, staff_id, procedure_id, dosage) 
+VALUES (9, 8, 8, 8, 80);
+INSERT INTO medication_prescriprion (patient_id, medication_id, staff_id, procedure_id, dosage) 
+VALUES (10, 9, 8, 8, 90);
+INSERT INTO medication_prescriprion (patient_id, medication_id, staff_id, procedure_id, dosage) 
+VALUES (10, 10, 8, 9, 100);
+
+INSERT INTO records (medical_record_id, patient_id) 
+VALUES (1, 9);
+INSERT INTO records (medical_record_id, patient_id) 
+VALUES (1, 8);
+INSERT INTO records (medical_record_id, patient_id) 
+VALUES (2, 9);
+INSERT INTO records (medical_record_id, patient_id) 
+VALUES (2, 8);
+INSERT INTO records (medical_record_id, patient_id) 
+VALUES (2, 7);
+INSERT INTO records (medical_record_id, patient_id) 
+VALUES (2, 6);
+INSERT INTO records (medical_record_id, patient_id) 
+VALUES (3, 9);
+INSERT INTO records (medical_record_id, patient_id) 
+VALUES (3, 8);
+INSERT INTO records (medical_record_id, patient_id) 
+VALUES (3, 7);
+INSERT INTO records (medical_record_id, patient_id) 
+VALUES (3, 6);
+
+-- staff_id corresponds to a general_practitioner
+-- (medical_record_id, patient_id) REFERENCES records
+INSERT INTO diagnose (staff_id, medical_record_id, patient_id, diagnosis) 
+VALUES (1, 2, 6, 'diagnosis_01');
+INSERT INTO diagnose (staff_id, medical_record_id, patient_id, diagnosis) 
+VALUES (1, 2, 7, 'diagnosis_02');
+INSERT INTO diagnose (staff_id, medical_record_id, patient_id, diagnosis) 
+VALUES (1, 2, 8, 'diagnosis_03');
+INSERT INTO diagnose (staff_id, medical_record_id, patient_id, diagnosis) 
+VALUES (1, 1, 8, 'diagnosis_04');
+INSERT INTO diagnose (staff_id, medical_record_id, patient_id, diagnosis) 
+VALUES (1, 1, 9, 'diagnosis_same');
+INSERT INTO diagnose (staff_id, medical_record_id, patient_id, diagnosis) 
+VALUES (2, 1, 8, 'diagnosis_05');
+INSERT INTO diagnose (staff_id, medical_record_id, patient_id, diagnosis) 
+VALUES (2, 1, 9, 'diagnosis_06');
+INSERT INTO diagnose (staff_id, medical_record_id, patient_id, diagnosis) 
+VALUES (2, 3, 7, 'diagnosis_same');
+INSERT INTO diagnose (staff_id, medical_record_id, patient_id, diagnosis) 
+VALUES (2, 3, 8, 'diagnosis_same');
+INSERT INTO diagnose (staff_id, medical_record_id, patient_id, diagnosis) 
+VALUES (2, 3, 9, 'diagnosis_07');
+
+INSERT INTO occupy (patient_id, room_id, start_date, end_date) 
+VALUES (1, 1, '01-JAN-1974', '09-FEB-1974');
+INSERT INTO occupy (patient_id, room_id, start_date, end_date) 
+VALUES (1, 2, '02-JAN-1974', '08-FEB-1974');
+INSERT INTO occupy (patient_id, room_id, start_date, end_date) 
+VALUES (1, 3, '03-JAN-1974', '07-FEB-1974');
+INSERT INTO occupy (patient_id, room_id, start_date, end_date) 
+VALUES (2, 4, '04-JAN-1974', '06-FEB-1974');
+INSERT INTO occupy (patient_id, room_id, start_date, end_date) 
+VALUES (2, 1, '05-JAN-1974', '05-FEB-1974');
+INSERT INTO occupy (patient_id, room_id, start_date, end_date) 
+VALUES (2, 2, '06-JAN-1974', '04-FEB-1974');
+INSERT INTO occupy (patient_id, room_id, start_date, end_date) 
+VALUES (3, 3, '07-JAN-1974', '03-FEB-1974');
+INSERT INTO occupy (patient_id, room_id, start_date, end_date) 
+VALUES (3, 4, '08-JAN-1974', '02-FEB-1974');
+INSERT INTO occupy (patient_id, room_id, start_date, end_date) 
+VALUES (3, 1, '09-JAN-1974', '02-FEB-1974');
+INSERT INTO occupy (patient_id, room_id, start_date, end_date) 
+VALUES (4, 2, '09-JAN-1974', '01-FEB-1974');
+
+INSERT INTO profile (patient_id, emergency_contact_id, address_id, health_fund_id) 
+VALUES (2, 1, 1, 1);
+INSERT INTO profile (patient_id, emergency_contact_id, address_id, health_fund_id) 
+VALUES (2, 2, 1, 1);
+INSERT INTO profile (patient_id, emergency_contact_id, address_id, health_fund_id) 
+VALUES (3, 1, 3, 1);
+INSERT INTO profile (patient_id, emergency_contact_id, address_id, health_fund_id) 
+VALUES (2, 1, 1, 4);
+INSERT INTO profile (patient_id, emergency_contact_id, address_id, health_fund_id) 
+VALUES (2, 1, 2, 2);
+INSERT INTO profile (patient_id, emergency_contact_id, address_id, health_fund_id) 
+VALUES (3, 3, 4, 1);
+INSERT INTO profile (patient_id, emergency_contact_id, address_id, health_fund_id) 
+VALUES (5, 6, 7, 1);
+INSERT INTO profile (patient_id, emergency_contact_id, address_id, health_fund_id) 
+VALUES (1, 10, 9, 8);
+INSERT INTO profile (patient_id, emergency_contact_id, address_id, health_fund_id) 
+VALUES (2, 2, 2, 2);
+INSERT INTO profile (patient_id, emergency_contact_id, address_id, health_fund_id) 
+VALUES (3, 4, 7, 10);
